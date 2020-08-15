@@ -18,12 +18,12 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 
 # Install dependencies
 COPY requirements.txt requirements-common.txt requirements-hyperopt.txt /freqtrade/
-RUN pip install numpy --no-cache-dir \
-  && pip install -r requirements-hyperopt.txt --no-cache-dir
+RUN pip3 install numpy --no-cache-dir \
+  && pip3 install -r requirements-hyperopt.txt --no-cache-dir
 
 # Install and execute
 COPY . /freqtrade/
-RUN pip install -e . --no-cache-dir
+RUN pipe install -e . --no-cache-dir
 ENTRYPOINT ["freqtrade"]
 # Default to trade mode
 CMD [ "trade" ]
