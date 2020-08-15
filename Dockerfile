@@ -3,8 +3,8 @@ FROM python:3.8.5-slim-buster
 RUN apt-get update \
     && apt-get -y install curl build-essential libssl-dev sqlite3 \
     && apt-get clean \
-    && pip3 install --upgrade pip3 \
-    && pip3 install plotly
+    && pip install --upgrade pip \
+    && pip install plotly
 
 # Prepare environment
 RUN mkdir /freqtrade
@@ -18,12 +18,12 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 
 # Install dependencies
 COPY requirements.txt requirements-common.txt requirements-hyperopt.txt /freqtrade/
-RUN pip3 install numpy --no-cache-dir \
-  && pip3 install -r requirements-hyperopt.txt --no-cache-dir
+RUN pip install numpy --no-cache-dir \
+  && pip install -r requirements-hyperopt.txt --no-cache-dir
 
 # Install and execute
 COPY . /freqtrade/
-RUN pipe install -e . --no-cache-dir
+RUN pip install -e . --no-cache-dir
 ENTRYPOINT ["freqtrade"]
 # Default to trade mode
 CMD [ "trade" ]
