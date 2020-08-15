@@ -3,7 +3,8 @@ FROM python:3.8.5-slim-buster
 RUN apt-get update \
     && apt-get -y install curl build-essential libssl-dev sqlite3 \
     && apt-get clean \
-    && pip install --upgrade pip
+    && pip3 install --upgrade pip3
+    && pip3 install plotly
 
 # Prepare environment
 RUN mkdir /freqtrade
