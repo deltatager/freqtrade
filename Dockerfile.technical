@@ -1,4 +1,4 @@
-FROM freqtradeorg/freqtrade:develop
+FROM deltatager/freqtrade:devel
 
 RUN apt-get update \
     && apt-get -y install git \
